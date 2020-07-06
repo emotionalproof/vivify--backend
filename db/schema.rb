@@ -10,10 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_06_033138) do
+ActiveRecord::Schema.define(version: 2020_07_06_165609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "games", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "mornings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "game_id", null: false
+    t.time "sleep_time"
+    t.time "alarm_time"
+    t.time "awake_time"
+    t.time "end_time"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_id"], name: "index_mornings_on_game_id"
+    t.index ["user_id"], name: "index_mornings_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"
@@ -27,4 +46,6 @@ ActiveRecord::Schema.define(version: 2020_07_06_033138) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "mornings", "games"
+  add_foreign_key "mornings", "users"
 end

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  game: one
+  sleep_time: 2020-07-06 12:56:09
+  alarm_time: 2020-07-06 12:56:09
+  awake_time: 2020-07-06 12:56:09
+
+two:
+  user: two
+  game: two
+  sleep_time: 2020-07-06 12:56:09
+  alarm_time: 2020-07-06 12:56:09
+  awake_time: 2020-07-06 12:56:09
