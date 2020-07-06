@@ -25,18 +25,18 @@ Game.create(name: Faker::Game.title)
 Game.create(name: Faker::Game.title)
 
 
-  t.bigint "user_id", null: false
-    t.bigint "game_id", null: false
-    t.time "sleep_time"
-    t.time "alarm_time"
-    t.time "awake_time"
-    t.time "end_time"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["game_id"], name: "index_mornings_on_game_id"
-    t.index ["user_id"], name: "index_mornings_on_user_id"
+#   t.bigint "user_id", null: false
+#     t.bigint "game_id", null: false
+#     t.time "sleep_time"
+#     t.time "alarm_time"
+#     t.time "awake_time"
+#     t.time "end_time"
+#     t.datetime "created_at", precision: 6, null: false
+#     t.datetime "updated_at", precision: 6, null: false
+#     t.index ["game_id"], name: "index_mornings_on_game_id"
+#     t.index ["user_id"], name: "index_mornings_on_user_id"
 
-user_id: User.all.sample.id
-game_id: Game.all.sample.id
-
-Morning.create()
+# user_id: User.all.sample.id
+# game_id: Game.all.sample.id
+# 
+# Morning.create()
