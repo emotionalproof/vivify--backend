@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 2020_07_06_165609) do
   create_table "mornings", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "game_id", null: false
-    t.time "sleep_time"
-    t.time "alarm_time"
-    t.time "awake_time"
-    t.time "end_time"
+    t.string "sleep_time"
+    t.string "alarm_time"
+    t.string "awake_time"
+    t.string "end_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["game_id"], name: "index_mornings_on_game_id"
