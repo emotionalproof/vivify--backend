@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-    before_action :find_user, only: [:update]
+    before_action :find_user, only: [:show_id, :update, :user_mornings]
 
     def index
         users = User.all
@@ -8,10 +8,14 @@ class Api::V1::UsersController < ApplicationController
 
     def show
         @user = User.find_by(username: params[:username])
-        render json: @user
+        render json: @user.to_json(:include => :mornings)
+    end
+    
+    def show_id
+        render json: @user.to_json(:include => :mornings)
     end
 
-     def create
+    def create
         user = User.create!(user_params)
 
        render json: user
@@ -23,6 +27,9 @@ class Api::V1::UsersController < ApplicationController
         render json: user
     end
 
+    def user_mornings
+        render json: @user.to_json(:include => :mornings)
+    end
     # def destroy
     #     movie = Movie.find(params[:id])
 
@@ -34,7 +41,7 @@ class Api::V1::UsersController < ApplicationController
     private
     
     def find_user
-        @user = User.find_by(username: params[:id])
+        @user = User.find_by(id: params[:id])
     end
 
     def user_params

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_06_165609) do
+ActiveRecord::Schema.define(version: 2020_07_10_144603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,14 +23,12 @@ ActiveRecord::Schema.define(version: 2020_07_06_165609) do
 
   create_table "mornings", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "game_id", null: false
     t.string "sleep_time"
     t.string "alarm_time"
     t.string "awake_time"
     t.string "end_time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["game_id"], name: "index_mornings_on_game_id"
     t.index ["user_id"], name: "index_mornings_on_user_id"
   end
 
@@ -44,8 +42,8 @@ ActiveRecord::Schema.define(version: 2020_07_06_165609) do
     t.string "profile_img"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "complete", default: false
   end
 
-  add_foreign_key "mornings", "games"
   add_foreign_key "mornings", "users"
 end

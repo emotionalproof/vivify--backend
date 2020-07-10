@@ -1,5 +1,5 @@
 class Api::V1::MorningsController < ApplicationController
-     before_action :find_morning, only: [:update]
+     before_action :find_morning, only: [:show, :update, :destroy]
 
     def index
         mornings = Morning.all
@@ -7,7 +7,6 @@ class Api::V1::MorningsController < ApplicationController
     end
 
     def show
-        @morning = Morning.find_by(id: params[:id])
         render json: @morning
     end
 
@@ -23,22 +22,21 @@ class Api::V1::MorningsController < ApplicationController
         render json: @morning
     end
 
-    # def destroy
-    #     movie = Movie.find(params[:id])
+    def destroy
+       
+        @morning.destroy!
 
-    #     movie.destroy!
-
-    #     render json: {}
-    # end
+        render json: {}
+    end
 
     private
     
     def find_morning
-        @morning = Morning.find_by(id: params[:id])
+        @morning = Morning.find(params[:id])
     end
 
     def morning_params
-        params.permit(:sleep_time, :alarm_time, :awake_time, :end_time, :user_id, :game_id)
+        params.permit(:sleep_time, :alarm_time, :awake_time, :end_time, :complete, :user_id)
     end
 end
 
